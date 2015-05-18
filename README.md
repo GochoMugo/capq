@@ -23,7 +23,7 @@ var capq = new Capq({
 
 // pushing new elements
 capq.rpush("a", "b", "c"); // => ["a", "b", "c"]
-capq.lpush("z"); // => ["z", "a", "b", "c"]
+capq.lpush("z"); // => ["z"]
 
 // popping elements
 var elem = capq.rpop(); // => ["c"]
@@ -60,7 +60,7 @@ The Constructor.
 To construct a new capped queue, you have to use `new`:
 
 ```js
-var capq = new CapQ();
+var capq = new Capq();
 ```
 
 
@@ -107,12 +107,12 @@ Return an Integer representing the length of the queue i.e. the number of occupi
 
 ### capq.empty()
 
-Returns `true` if the queue is fully occupied. Otherwise, `false`.
+Returns `true` if queue is **not** occupied at all. Otherwise, `false`.
 
 
 ### capq.full()
 
-Return `true` if queue is **not** occupied at all. Otherwise, `false`.
+Returns `true` if the queue is fully occupied. Otherwise, `false`.
 
 
 ## Notes:
@@ -120,7 +120,7 @@ Return `true` if queue is **not** occupied at all. Otherwise, `false`.
 <a name="autopop"></a>
 ### autopop: false
 
-If `autopop` is `false`, for new elements to be successfully pushed to a filled queue, some elements have to be popped first.
+If `autopop` is set to `false`, for new elements to be successfully pushed to a **filled** queue, some elements have to be popped first.
 
 **So how do you know if elements were not pushed successfully?**
 
