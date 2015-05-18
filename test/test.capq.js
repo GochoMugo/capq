@@ -162,7 +162,7 @@ describe("capq.rpop", function() {
   it("num of elems to pop is optional", function() {
     var capq = new CapQ();
     capq.rpush(1);
-    should(function(){ capq.rpop() }).not.throw();
+    should(function(){ capq.rpop(); }).not.throw();
   });
 
   it("returns empty array if queue is empty", function() {
@@ -194,7 +194,7 @@ describe("capq.lpop", function() {
 
   it("num of elems to pop is optional", function() {
     var capq = new CapQ();
-    should(function() { capq.lpop() }).not.throw();
+    should(function() { capq.lpop(); }).not.throw();
   });
 
   it("returns empty array if queue is empty", function() {

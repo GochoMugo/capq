@@ -1,0 +1,6 @@
+# All in an effort to minimize the size of the package
+.gitignore
+.jshintrc
+.travis.yml
+Gruntfile.js
+test/
