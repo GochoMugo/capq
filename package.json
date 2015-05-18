@@ -1,0 +1,33 @@
+{
+  "name": "capq",
+  "version": "0.0.0",
+  "description": "A Capped Queue for Node.js Applications",
+  "main": "lib/capq.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GochoMugo/capq.git"
+  },
+  "keywords": [
+    "capped",
+    "queue"
+  ],
+  "author": "GochoMugo <mugo@forfuture.co.ke>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GochoMugo/capq/issues"
+  },
+  "homepage": "https://github.com/GochoMugo/capq",
+  "dependencies": {
+    "node-uuid": "^1.4.3"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-mocha-test": "^0.12.7",
+    "istanbul": "^0.3.14",
+    "should": "^6.0.3"
+  }
+}
