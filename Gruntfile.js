@@ -10,9 +10,15 @@ exports = module.exports = function(grunt) {
   "use strict";
 
   grunt.initConfig({
+    benchmark: {
+    all: {
+        src: ["benchmark/*.js"],
+        dest: "benchmark/results.csv"
+      }
+    },
     jshint: {
       all: [
-        "Gruntfile.js", "lib/**/*.js", "test/**/*.js"
+        "Gruntfile.js", "lib/**/*.js", "test/**/*.js", "benchmark/**/*.js"
       ],
       options: {
         jshintrc: true
@@ -21,7 +27,7 @@ exports = module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'spec',
+          reporter: "spec",
           quiet: false,
           clearRequireCache: false
         },
@@ -30,8 +36,9 @@ exports = module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks("grunt-benchmark");
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-mocha-test");
 
-  grunt.registerTask("test", ["jshint", "mochaTest"]);
+  grunt.registerTask("test", ["jshint", "mochaTest", "benchmark"]);
 };

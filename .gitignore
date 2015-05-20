@@ -4,3 +4,6 @@ node_modules/
 # code coverage
 coverage/
 
+# benchmark results
+benchmark/results.csv
+
