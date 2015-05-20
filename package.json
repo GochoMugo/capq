@@ -1,6 +1,6 @@
 {
   "name": "capq",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A Capped Queue for Node.js Applications",
   "main": "lib/capq.js",
   "scripts": {

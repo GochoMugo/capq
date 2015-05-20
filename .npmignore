@@ -4,3 +4,6 @@
 .travis.yml
 Gruntfile.js
 test/
+benchmark/
+coverage/
+
