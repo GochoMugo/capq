@@ -1,7 +1,7 @@
 
 # capq
 
-> A Capped Queue for Node.js Applications
+> A Simple Capped Queue for Node.js Applications
 
 [![Build Status](https://travis-ci.org/GochoMugo/capq.svg?branch=master)](https://travis-ci.org/GochoMugo/capq) [![Coverage Status](https://coveralls.io/repos/GochoMugo/capq/badge.svg)](https://coveralls.io/r/GochoMugo/capq) [![Dependency Status](https://gemnasium.com/GochoMugo/capq.svg)](https://gemnasium.com/GochoMugo/capq)
 
@@ -86,7 +86,7 @@ Push the element to the left of the queue.
 Returns `element` if pushed successfully. Otherwise `capq.null`.
 
 
-## capq.rfix(element)
+### capq.rfix(element)
 
 Push the element to the right of the queue.
 
@@ -226,8 +226,6 @@ if (elem === capq.null) {
 <a name="performance"></a>
 ### performance
 
-Overview:
-
 ```
 Running suite Left-Popping [benchmark/lpop.js]...
 >> capq#lchuck x 77,975,574 ops/sec ±0.34% (99 runs sampled)
@@ -261,8 +259,8 @@ From this data, we can conclude:
 * `rfix` should be used in favour of `rpush`
 * `lchuck` should be used in favour of `lpop`
 * `rchuck` should be used in favour of `rpop`
-* the wrapping around array methods (`array#push`, `array#pop`, etc.) to make up the above methods costs us performance
-* do **NOT** use this module in a performance-sensitive application where a simple array will suffice
+* the wrapping around array methods (`array#push`, `array#pop`, etc.) to make up the above methods may cost us performance
+* do **NOT** use a capped queue in a performance-sensitive application where a simple array will suffice
 
 To run these tests on your own:
 
@@ -273,6 +271,18 @@ To run these tests on your own:
 ⇒ grunt test # runs unit tests and benchmarks
 ⇒ grunt benchmark # runs only benchmarks
 ```
+
+> Please help me ensure these benchmarks are significantly true (by running, reviewing and designing). Benchmarks have been placed in `benchmark/` directory.
+
+
+<a name="memory"></a>
+### memory
+
+A capped queue uses an underlying array with a maximum length of the defined capacity. No matter how many elements you add and remove from the queue, the array size remains the same (if all the elements added and removed are of the same type, of course).
+
+The underlying array does **not** grow (only grows the first time its pushed to capacity) and shrink. No slicing occurs at any time. **This is by design**: by using iterators we can ensure the array length is constant. These iterators define the order of the elements, and not the positions in the array.
+
+However, when removing elements from the queue, the memory occuppied by such elements is not reclaimed. Freeing these memory spaces would cost us more performance.
 
 
 ## license:
