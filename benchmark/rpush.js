@@ -6,6 +6,9 @@
 */
 
 
+"use strict";
+
+
 // own modules
 var Capq = require("../lib/capq");
 
@@ -21,16 +24,15 @@ var cycles = {
 
 
 // prepare
-capq.rpush = capq.rpush.bind(capq);
 function setupCapq() {
-  if (++cycles.capq === fewElements.length) {
-    cycles = 0;
+  if (++cycles.capq >= fewElements.length) {
+    cycles.capq = 0;
     capq.rpop(5);
   }
 }
 function setupArray() {
-  if (++cycles.array === fewElements.length) {
-    cycles = 0;
+  if (++cycles.array >= fewElements.length) {
+    cycles.array = 0;
     array = [ ];
   }
 }
@@ -38,16 +40,22 @@ function setupArray() {
 module.exports = {
   name: "Right-Pushing",
   tests: {
+    "capq#rfix": {
+      onCycle: setupCapq,
+      fn: function() {
+        capq.rfix.apply(capq, [1]);
+      }
+    },
     "capq#rpush (few elements)": {
       onCycle: setupCapq,
       fn: function() {
-      capq.rpush.apply(fewElements);
+        capq.rpush.apply(capq, fewElements);
       }
     },
     "array#push (few elements)": {
       onCycle: setupArray,
       fn: function() {
-        array.push.apply(fewElements);
+        array.push.apply(array, fewElements);
       }
     }
   }

@@ -6,6 +6,9 @@
 */
 
 
+"use strict";
+
+
 // own modules
 var Capq = require("../lib/capq");
 
@@ -21,16 +24,15 @@ var cycles = {
 
 
 // prepare
-capq.lpop = capq.lpop.bind(capq);
 function setupCapq() {
-  if (++cycles.capq === length) {
-    cycles = 0;
+  if (++cycles.capq >= length) {
+    cycles.capq = 0;
     capq.rpush(1, 2, 3, 4, 5);
   }
 }
 function setupArray() {
-  if (++cycles.array === length) {
-    cycles = 0;
+  if (++cycles.array >= length) {
+    cycles.array = 0;
     array.push(1, 2, 3, 4, 5);
   }
 }
@@ -41,6 +43,12 @@ setupArray();
 module.exports = {
   name: "Right-Popping",
   tests: {
+    "capq#rchuck": {
+      onCycle: setupCapq,
+      fn: function() {
+        capq.rchuck();
+      }
+    },
     "capq#rpop (few elements)": {
       onCycle: setupCapq,
       fn: function() {

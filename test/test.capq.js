@@ -23,6 +23,11 @@ describe("module", function() {
     should(CapQ.CapQ).be.a.Function;
     should(CapQ.CapQ).eql(CapQ);
   });
+
+ it("exports constructor function off CapQ.Capq", function() {
+    should(CapQ.Capq).be.a.Function;
+    should(CapQ.Capq).eql(CapQ);
+  });
 });
 
 
@@ -114,6 +119,87 @@ describe("capq.length", function() {
     var capq = new CapQ({ capacity: 3 });
     capq.rpush("a", "b", "c", "d", "e");
     should(capq.length()).eql(3);
+  });
+});
+
+
+describe("capq.null", function() {
+  it("a string representing a uuid", function() {
+    var capq = new CapQ();
+    should(capq.null).be.a.String;
+  });
+});
+
+
+describe("capq.rfix", function() {
+  it("pushes to right of the queue", function() {
+    var capq = new CapQ();
+    capq.rpush(1, 2);
+    capq.rfix(3);
+    should(capq.lpop(3)).eql([1, 2, 3]);
+  });
+
+  it("returns elem if successful", function() {
+    var capq = new CapQ();
+    should(capq.rfix(3)).eql(3);
+  });
+
+  it("returns capq.null if failed", function() {
+    var capq = new CapQ({ capacity: 2, autopop: false });
+    capq.rpush(1, 2);
+    should(capq.rfix(3)).eql(capq.null);
+  });
+});
+
+
+
+describe("capq.lfix", function() {
+  it("pushes to left of the queue", function() {
+    var capq = new CapQ();
+    capq.rpush(1, 2);
+    capq.lfix(3);
+    should(capq.lpop(3)).eql([3, 1, 2]);
+  });
+
+  it("returns elem if successful", function() {
+    var capq = new CapQ();
+    should(capq.lfix(3)).eql(3);
+  });
+
+  it("returns capq.null if failed", function() {
+    var capq = new CapQ({ capacity: 2, autopop: false });
+    capq.rpush(1, 2);
+    should(capq.lfix(3)).eql(capq.null);
+  });
+});
+
+
+describe("capq.rchuck", function() {
+  it("removes from right of the queue", function() {
+    var capq = new CapQ();
+    capq.rpush(1, 2, 3);
+    should(capq.rchuck()).eql(3);
+  });
+
+  it("returns capq.null if queue is empty", function() {
+    var capq = new CapQ();
+    should(capq.empty()).be.ok;
+    should(capq.rchuck()).eql(capq.null);
+  });
+});
+
+
+describe("capq.lchuck", function() {
+  it("removes from left of the queue", function() {
+    var capq = new CapQ();
+    capq.rpush(1, 2, 3);
+    should(capq.lchuck()).eql(1);
+  });
+
+  it("returns capq.null if queue is empty", function() {
+    var capq = new CapQ();
+    should(capq.empty()).be.ok;
+    should(capq.lchuck()).eql(capq.null);
   });
 });
 
