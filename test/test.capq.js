@@ -69,6 +69,18 @@ describe("CapQ constructor options", function() {
       capq.rpush(1, 2, 3);
       should(capq.full()).eql(true);
     });
+
+    it("defaults to 5 if zero capacity is specified", function() {
+        var capq = new CapQ({ capacity: 0 });
+        capq.rpush(1, 2, 3, 4, 5, 6);
+        should(capq.length()).eql(5);
+    });
+
+    it("defaults to 5 if negative capacity is specified", function() {
+        var capq = new CapQ({ capacity: -1 });
+        capq.rpush(1, 2, 3, 4, 5, 6);
+        should(capq.length()).eql(5);
+    });
   });
 });
 

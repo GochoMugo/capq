@@ -68,6 +68,7 @@ The Constructor.
 
 * `options` (Object):
   * `capacity` (Integer): capacity of the queue. Defaults to `5`.
+    * If a zero or negative capacity is specified, it defaults to `5` and a warning printed to `stderr`.
   * `autopop` (Boolean): automatically pop elements if length is exceeded. Defaults to `true`. See [notes on autopop](#autopop).
 
 To construct a new capped queue, you have to use `new`:
