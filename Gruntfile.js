@@ -6,8 +6,10 @@
 */
 
 
+"use strict";
+
+
 exports = module.exports = function(grunt) {
-  "use strict";
 
   grunt.initConfig({
     benchmark: {
