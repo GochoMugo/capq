@@ -3,7 +3,7 @@
 
 > A Simple Capped Queue for Node.js Applications
 
-[![Build Status](https://travis-ci.org/GochoMugo/capq.svg?branch=master)](https://travis-ci.org/GochoMugo/capq) [![Coverage Status](https://coveralls.io/repos/GochoMugo/capq/badge.svg)](https://coveralls.io/r/GochoMugo/capq) [![Dependency Status](https://gemnasium.com/GochoMugo/capq.svg)](https://gemnasium.com/GochoMugo/capq)
+[![npm](https://img.shields.io/npm/v/capq.svg)](https://www.npmjs.com/package/capq) [![Build Status](https://travis-ci.org/GochoMugo/capq.svg?branch=master)](https://travis-ci.org/GochoMugo/capq) [![Coverage Status](https://coveralls.io/repos/GochoMugo/capq/badge.svg)](https://coveralls.io/r/GochoMugo/capq) [![Dependency Status](https://gemnasium.com/GochoMugo/capq.svg)](https://gemnasium.com/GochoMugo/capq)
 
 
 ## example:
@@ -44,6 +44,9 @@ capq.lpop(2); // => [1, "a"]
 
 // check the queue's length
 capq.length(); // => 0
+
+// get the queue's capacity
+capq.capacity(); // => 5
 
 // check if queue is empty
 capq.empty(); // => true
