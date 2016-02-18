@@ -151,6 +151,12 @@ Returns an Array of the popped elements. See [notes on popping](#popping).
 Return an Integer representing the length of the queue i.e. the number of occupied slots.
 
 
+### capq.capacity()
+
+Returns an Integer representing the capacity of the queue. This is equal to the
+capacity set during creation.
+
+
 ### capq.empty()
 
 Returns `true` if queue is **not** occupied at all. Otherwise, `false`.

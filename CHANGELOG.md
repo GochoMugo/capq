@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+Added:
+
+* `capq.capacity()` returns the capacity of the queue
+
 Changed:
 
 * dependencies have been updated

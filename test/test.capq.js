@@ -135,6 +135,19 @@ describe("capq.length", function() {
 });
 
 
+describe("capq.capacity", function() {
+    it("returns the default capacity, if none was set", function() {
+        var capq = new CapQ();
+        should(capq.capacity()).eql(5);
+    });
+
+    it("returns the set capacity", function() {
+        var capq = new CapQ({ capacity: 10 });
+        should(capq.capacity()).eql(10);
+    });
+});
+
+
 describe("capq.null", function() {
   it("a string representing a uuid", function() {
     var capq = new CapQ();
