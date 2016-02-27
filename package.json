@@ -1,6 +1,6 @@
 {
   "name": "capq",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A Capped Queue for Node.js Applications",
   "main": "lib/capq.js",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "keywords": [
     "capped",
-    "queue"
+    "queue",
+    "array"
   ],
   "author": "GochoMugo <mugo@forfuture.co.ke>",
   "license": "MIT",
