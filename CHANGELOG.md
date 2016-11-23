@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+
+## 1.0.1 - 23/11/2016
+
+Changed:
+
+* Update dependencies
+
+
 ## 1.0.0 - 27/02/2016
 
 Added:
